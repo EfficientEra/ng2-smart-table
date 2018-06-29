@@ -1,6 +1,6 @@
 {
-  "name": "ng2-smart-table",
-  "version": "1.3.4",
+  "name": "ng2-smart-table-custom-filters",
+  "version": "1.4.0",
   "description": "Angular Smart Table",
   "main": "./bundles/table.umd.js",
   "module": "./index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+http://akveo.github.io/ng2-smart-table.git"
+    "url": "git+https://github.com/Ivan0xFF/ng2-smart-table.git"
   },
   "bugs": {
     "url": "http://akveo.github.io/ng2-smart-table/issues"
