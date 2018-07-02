@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Column} from "../../lib/data-set/column";
-import {DataSource} from "../../lib/data-source/data-source";
+import {Component} from '@angular/core';
+import {FilterDefault} from "./filter-default";
 
 @Component({
   selector: 'ng2-smart-table-filter',
@@ -22,18 +21,4 @@ import {DataSource} from "../../lib/data-source/data-source";
       </div>
     `,
 })
-export class FilterComponent {
-  @Input() column: Column;
-  @Input() source: DataSource;
-  @Input() inputClass: string = '';
-
-  @Output() filter = new EventEmitter<any>();
-
-  onFilter(query: string) {
-    this.source.addFilter({
-      field: this.column.id,
-      search: query,
-      filter: this.column.getFilterFunction(),
-    });
-  }
-}
+export class FilterComponent extends FilterDefault {}

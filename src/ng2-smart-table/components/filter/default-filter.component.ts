@@ -35,7 +35,7 @@ import {FilterDefault} from "./filter-default";
   `,
 })
 export class DefaultFilterComponent extends FilterDefault implements OnChanges {
-
+  query: string = '';
   protected dataChangedSub: Subscription;
 
   ngOnChanges(changes: SimpleChanges) {
