@@ -1,6 +1,6 @@
 {
   "name": "ng2-smart-table-custom-filters",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Angular Smart Table",
   "main": "./bundles/table.umd.js",
   "module": "./index.js",
