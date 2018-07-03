@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { LocalDataSource } from '../local/local.data-source';
 import { ServerSourceConf } from './server-source.conf';
@@ -28,6 +28,7 @@ export class ServerDataSource extends LocalDataSource {
   }
 
   getElements(): Promise<any> {
+    this.emitOnUpdateStarted('update started');
     return this.requestElements()
       .pipe(map(res => {
         this.lastRequestCount = this.extractTotalFromResponse(res);
@@ -35,6 +36,10 @@ export class ServerDataSource extends LocalDataSource {
 
         return this.data;
       })).toPromise();
+  }
+
+  protected emitOnUpdateStarted(element: any) {
+      this.onUpdateStartedSource.next(element);
   }
 
   /**
