@@ -38,10 +38,6 @@ export class ServerDataSource extends LocalDataSource {
       })).toPromise();
   }
 
-  protected emitOnUpdateStarted(element: any) {
-      this.onUpdateStartedSource.next(element);
-  }
-
   /**
    * Extracts array of data from server response
    * @param res

@@ -118,6 +118,10 @@ export abstract class DataSource {
     this.onUpdatedSource.next(element);
   }
 
+  protected emitOnUpdateStarted(element: any) {
+      this.onUpdateStartedSource.next(element);
+  }
+
   protected emitOnAdded(element: any) {
     this.onAddedSource.next(element);
   }
