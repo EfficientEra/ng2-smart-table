@@ -7,6 +7,7 @@ export abstract class DataSource {
   protected onAddedSource = new Subject<any>();
   protected onUpdatedSource = new Subject<any>();
   protected onRemovedSource = new Subject<any>();
+  protected onUpdateStartedSource = new Subject<any>();
 
   abstract getAll(): Promise<any>;
   abstract getElements(): Promise<any>;
@@ -30,6 +31,10 @@ export abstract class DataSource {
 
   onAdded(): Observable<any> {
     return this.onAddedSource.asObservable();
+  }
+
+  onUpdateStarted(): Observable<any> {
+      return this.onUpdateStartedSource.asObservable();
   }
 
   onUpdated(): Observable<any> {
