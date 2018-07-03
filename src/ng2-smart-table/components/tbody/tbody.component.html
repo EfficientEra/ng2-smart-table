@@ -50,7 +50,5 @@
 </tr>
 
 <tr *ngIf="grid.getRows().length == 0">
-  <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)">
-    {{ noDataMessage }}
-  </td>
+  <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)" [innerHTML]="noDataMessage"></td>
 </tr>

@@ -60,6 +60,7 @@ export class AdvancedExampleFiltersComponent {
   ];
 
   settings = {
+    noDataMessage: '<strong>No data found</strong>',
     columns: {
       id: {
         title: 'ID',
