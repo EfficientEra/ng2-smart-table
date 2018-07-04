@@ -28,7 +28,6 @@ export class ServerDataSource extends LocalDataSource {
   }
 
   getElements(): Promise<any> {
-    this.emitOnUpdateStarted('update started');
     return this.requestElements()
       .pipe(map(res => {
         this.lastRequestCount = this.extractTotalFromResponse(res);

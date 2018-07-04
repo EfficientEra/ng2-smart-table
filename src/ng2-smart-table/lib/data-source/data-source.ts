@@ -3,11 +3,11 @@ import { Observable } from 'rxjs';
 
 export abstract class DataSource {
 
+  protected onChangeStartedSource = new Subject<any>();
   protected onChangedSource = new Subject<any>();
   protected onAddedSource = new Subject<any>();
   protected onUpdatedSource = new Subject<any>();
   protected onRemovedSource = new Subject<any>();
-  protected onUpdateStartedSource = new Subject<any>();
 
   abstract getAll(): Promise<any>;
   abstract getElements(): Promise<any>;
@@ -33,8 +33,8 @@ export abstract class DataSource {
     return this.onAddedSource.asObservable();
   }
 
-  onUpdateStarted(): Observable<any> {
-      return this.onUpdateStartedSource.asObservable();
+  onChangeStarted(): Observable<any> {
+      return this.onChangeStartedSource.asObservable();
   }
 
   onUpdated(): Observable<any> {
@@ -118,15 +118,12 @@ export abstract class DataSource {
     this.onUpdatedSource.next(element);
   }
 
-  protected emitOnUpdateStarted(element: any) {
-      this.onUpdateStartedSource.next(element);
-  }
-
   protected emitOnAdded(element: any) {
     this.onAddedSource.next(element);
   }
 
   protected emitOnChanged(action: string) {
+    this.onChangeStartedSource.next(action);
     this.getElements().then((elements) => this.onChangedSource.next({
       action: action,
       elements: elements,

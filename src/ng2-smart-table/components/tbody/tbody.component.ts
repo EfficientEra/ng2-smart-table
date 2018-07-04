@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, OnInit, OnChanges} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 
 import { Grid } from '../../lib/grid';
 import { Row } from '../../lib/data-set/row';
@@ -10,7 +10,7 @@ import {Column} from "../../lib/data-set/column";
   styleUrls: ['./tbody.component.scss'],
   templateUrl: './tbody.component.html',
 })
-export class Ng2SmartTableTbodyComponent implements OnInit, OnChanges {
+export class Ng2SmartTableTbodyComponent implements OnChanges {
 
   @Input() grid: Grid;
   @Input() source: DataSource;
@@ -38,21 +38,7 @@ export class Ng2SmartTableTbodyComponent implements OnInit, OnChanges {
   isActionEdit: boolean;
   isActionDelete: boolean;
   noDataMessage: boolean;
-  tableLoading: boolean;
   loadingMessage: string;
-
-  ngOnInit() {
-    this.source.onUpdateStarted().subscribe(
-        e => {
-            setTimeout(() => this.tableLoading = true);
-        }
-    );
-    this.source.onChanged().subscribe(
-        e => {
-            setTimeout(() => this.tableLoading = false);
-        }
-    );
-  }
 
   ngOnChanges() {
     this.isMultiSelectVisible = this.grid.isMultiSelectVisible();

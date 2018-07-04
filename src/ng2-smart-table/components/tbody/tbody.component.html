@@ -1,4 +1,4 @@
-<tr *ngFor="let row of grid.getRows()" [hidden]="tableLoading" (click)="userSelectRow.emit(row)" (mouseover)="rowHover.emit(row)" class="ng2-smart-row" [className]="rowClassFunction(row)" [ngClass]="{selected: row.isSelected}">
+<tr *ngFor="let row of grid.getRows()" [hidden]="grid.getLoading()" (click)="userSelectRow.emit(row)" (mouseover)="rowHover.emit(row)" class="ng2-smart-row" [className]="rowClassFunction(row)" [ngClass]="{selected: row.isSelected}">
   <td *ngIf="isMultiSelectVisible" class="ng2-smart-actions ng2-smart-action-multiple-select" (click)="multipleSelectRow.emit(row)">
     <input type="checkbox" class="form-control" [ngModel]="row.isSelected">
   </td>
@@ -49,10 +49,10 @@
   </td>
 </tr>
 
-<tr [hidden]="tableLoading" *ngIf="grid.getRows().length == 0">
+<tr [hidden]="grid.getLoading()" *ngIf="grid.getRows().length == 0">
   <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)" [innerHTML]="noDataMessage"></td>
 </tr>
 
-<tr [hidden]="!tableLoading">
+<tr [hidden]="!grid.getLoading()">
   <td [attr.colspan]="grid.getColumns().length + (isActionAdd || isActionEdit || isActionDelete)" [innerHTML]="loadingMessage"></td>
 </tr>

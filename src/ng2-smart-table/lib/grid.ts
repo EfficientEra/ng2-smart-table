@@ -11,6 +11,7 @@ import { DataSource } from './data-source/data-source';
 export class Grid {
 
   createFormShown: boolean = false;
+  gridLoading: boolean;
 
   source: DataSource;
   settings: any;
@@ -57,14 +58,23 @@ export class Grid {
   }
 
   setSource(source: DataSource) {
-    this.source = this.prepareSource(source);
+    source.onChangeStarted().subscribe(() => this.gridLoading = true);
 
-    this.source.onChanged().subscribe((changes: any) => this.processDataChange(changes));
+    source.onChanged().subscribe((changes: any) => {
+      this.processDataChange(changes);
+      this.gridLoading = false;
+    });
 
-    this.source.onUpdated().subscribe((data: any) => {
+    source.onUpdated().subscribe((data: any) => {
       const changedRow = this.dataSet.findRowByData(data);
       changedRow.setData(data);
     });
+
+    this.source = this.prepareSource(source);
+  }
+
+  getLoading(): boolean {
+    return this.gridLoading;
   }
 
   getSetting(name: string, defaultValue?: any): any {
