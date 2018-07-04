@@ -1,6 +1,6 @@
 {
   "name": "ee-ng-smart-table",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Angular Smart Table",
   "main": "./bundles/table.umd.js",
   "module": "./index.js",
