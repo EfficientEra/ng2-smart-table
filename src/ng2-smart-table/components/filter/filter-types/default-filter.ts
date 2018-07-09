@@ -2,16 +2,15 @@ import { Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Column } from '../../../lib/data-set/column';
-import {FilterConf} from "../filter.conf";
 
 export class DefaultFilter implements Filter, OnDestroy {
 
   delay: number = 300;
   changesSubscription: Subscription;
-  @Input() query: string | Array<FilterConf>;
+  @Input() query: string | string[];
   @Input() inputClass: string;
   @Input() column: Column;
-  @Output() filter = new EventEmitter<string | Array<FilterConf>>();
+  @Output() filter = new EventEmitter<string | string[]>();
 
   ngOnDestroy() {
     if (this.changesSubscription) {
@@ -28,8 +27,8 @@ export interface Filter {
 
   delay?: number;
   changesSubscription?: Subscription;
-  query: string | Array<FilterConf>;
+  query: string | string[];
   inputClass: string;
   column: Column;
-  filter: EventEmitter<string | Array<FilterConf>>;
+  filter: EventEmitter<string | string[]>;
 }
