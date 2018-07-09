@@ -13,7 +13,7 @@ export class Column {
   sortDirection: string = '';
   defaultSortDirection: string = '';
   editor: { type: string, config: any, component: any } = { type: '', config: {}, component: null };
-  filter: { type: string, config: any, component: any } = { type: '', config: {}, component: null };
+  filter: { type: string, config: any, component: any, queryFields: string[] } = { type: '', config: {}, component: null, queryFields: [] };
   renderComponent: any = null;
   compareFunction: Function;
   valuePrepareFunction: Function;
