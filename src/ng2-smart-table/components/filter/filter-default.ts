@@ -14,6 +14,7 @@ export class FilterDefault {
   onFilter(event: string | string[]) {
     this.source.addFilter({
       field: this.column.id,
+      queryFields: this.column.getFilterConfig().queryFields,
       search: event,
       filter: this.column.getFilterFunction()
     });
