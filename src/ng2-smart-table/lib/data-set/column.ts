@@ -52,6 +52,10 @@ export class Column {
     return this.filter && this.filter.config;
   }
 
+  getFilterQueryFields(): string[] {
+    return this.filter && this.filter.queryFields;
+  }
+
   protected process() {
     this.title = this.settings['title'];
     this.class = this.settings['class'];
